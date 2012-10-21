@@ -1,0 +1,10 @@
+*.DS_Store
+*.gem
+*.rbc
+.bundle
+rdoc
+spec/reports
+tmp
+
+config/users.yml
+config/config.yml
