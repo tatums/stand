@@ -1,2 +1,6 @@
-%h1
-  = "#{@user.first} #{@user.last}"
+.well
+  %p.lead
+    = "#{@user.first} #{@user.last}"
+  .controls
+    %form{ action: "/next", method: "post"}
+      %input{ class: 'btn', :type => "submit", :name => "next", :value => 'Next'}
