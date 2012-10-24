@@ -1,12 +1,11 @@
 class Stand
-  require './user.rb'
-  require './mail.rb'
+  require './lib/user.rb'
+  require './lib/mail.rb'
   require 'yaml'
   require 'redis'
   require 'json'
-
-  USERS = YAML.load_file('../config/users.yml')
-  CONFIG = YAML.load_file('../config/config.yml')
+  USERS = YAML.load_file('./config/users.yml')
+  CONFIG = YAML.load_file('./config/config.yml')
   #REDIS = Redis.new(:host => CONFIG['redis']['host'], :port => CONFIG['redis']['port'])
 
   attr_reader :current
