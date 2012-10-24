@@ -3,7 +3,7 @@ require 'sinatra'
 require 'rack-flash'
 require 'haml'
 require 'pry'
-require './stand.rb'
+require './lib/stand.rb'
 
 #set :haml
 enable :sessions

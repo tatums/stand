@@ -1,0 +1,10 @@
+mail:
+  host: 'youremail.server.com'
+  user: 'someuser'
+  from: 'default_from@youremail.server.com'
+  port: 25
+  password: '1234'
+
+redis:
+  host: '127.0.0.1'
+  port: 6379
