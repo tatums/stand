@@ -9,8 +9,11 @@ The Setup
 * config/users.yaml
 
 This app will be looking for 2 files in the config foler.
+
 config.yaml holds the email settings and redis settings.
+
 users.yaml holds the user data.
+
 I've included example files.
 
 Boot
