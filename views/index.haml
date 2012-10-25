@@ -1,6 +1,11 @@
 .well
+  %p.lead.underline At Bat
   %p.lead
     = "#{@user.first} #{@user.last}"
   .controls
-    %form{ action: "/next", method: "post"}
-      %input{ class: 'btn', :type => "submit", :name => "next", :value => 'Next'}
+    %a{ href: '/email', class: 'btn'}
+      Email
+      %i.icon-envelope
+    %a{ href: '/next', class: 'btn pull-right'}
+      Next
+      %i.icon-chevron-right

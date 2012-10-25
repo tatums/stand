@@ -2,8 +2,7 @@
 %html
   %head
     %title= "Stand"
-    %link{ :href => "/css/bootstrap.css", :media => "screen", :rel => "stylesheet" }
-    %link{ :href => "/css/bootstrap-responsive.css", :media => "screen", :rel => "stylesheet" }
+    %link{ :href => "/css/style.css", :media => "screen", :rel => "stylesheet" }
     %meta{ :name => "viewport", :content=>"width=device-width, initial-scale=1.0"}
   %body
     .container-fluid
@@ -15,24 +14,22 @@
               %a.close{ 'data-dismiss' => "alert"} x
       .row-fluid
         .span3
-          %ul.nav.nav-list
-            /%li
-            /  %a{href: '/'} Home
-            /%li
-            /  %a{href: '/import'} Import
-            %li
-              %form{ :action => "/reset", :method => "post"}
-                %input{class: 'btn', :type => "submit", :name => "reset", :value => 'Reset'}
-            %li
-              %form{ :action => "/email", :method => "post"}
-                %input{ class: 'btn', :type => "submit", :name => "email", :value => 'Email'}
+          .well
+            %p.lead.underline On Deck
+            %p.lead
+              = "#{@stand.on_deck.first} #{@stand.on_deck.last}"
 
           %ul.unstyled.nav.nav-list
             - @stand.users.each do |user|
               %li
                 = "#{user.first} #{user.last}"
-        .span9
+        .span6
           = yield
+        .span3
+          %ul.nav.nav-list
+            %li
+              %form{ :action => "/reset", :method => "post"}
+                %input.btn.btn-danger{:type => "submit", :name => "reset", :value => 'Reset'}
 
 
 

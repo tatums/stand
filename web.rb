@@ -3,9 +3,10 @@ require 'sinatra'
 require 'rack-flash'
 require 'haml'
 require 'pry'
+
 require './lib/stand.rb'
 
-#set :haml
+
 enable :sessions
 use Rack::Flash
 
@@ -16,12 +17,12 @@ end
 
 get '/' do
   @user = @stand.current
+  @on_deck = @stand.on_deck
   haml :index
 end
 
-post '/next' do
+get '/next' do
   session[:stand].next
-  #flash[:notice] = "Dude! You're getting a dell." unless null_user?
   redirect to('/')
 end
 
@@ -31,7 +32,7 @@ post '/reset' do
   redirect to('/')
 end
 
-post '/email' do
+get '/email' do
   session[:stand].current.mail
   flash[:notice] = "Email sent" unless null_user?
   redirect to('/')
@@ -42,7 +43,9 @@ get '/import' do
 end
 
 post '/process_import' do
-  @stand.load_users YAML.load_file(params[:file][:tempfile])
+  @file = YAML.load_file(params[:file][:tempfile])
+  Persist.new.sadd(@file)
+  session[:stand]  = nil
   flash[:notice] = "The file has been processed!!"
   redirect to('/')
 end
